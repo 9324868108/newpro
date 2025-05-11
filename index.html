@@ -1,0 +1,689 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Xwork | The Future of Freelancing</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #4F8EF7;
+      --accent: #24C486;
+      --background: #f5f7fa;
+      --dark: #20232a;
+      --light: #fff;
+      --gray: #6c7a89;
+      --danger: #f85757;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: var(--background);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3vw;
+      background: var(--light);
+      box-shadow: 0 2px 10px rgba(79,142,247,0.06);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .navbar .logo {
+      font-size: 1.7rem; font-weight: 700; color: var(--primary);
+      letter-spacing: 2px;
+      display: flex; align-items: center;
+    }
+    .nav-links {
+      display: flex; gap: 2rem;
+    }
+    .nav-links a { font-weight: 500; }
+    .nav-cta {
+      background: var(--primary); color: #fff;
+      padding: 0.45rem 1.4rem; border-radius: var(--radius);
+      font-weight: 600; margin-left: 1rem;
+      transition: background 0.18s;
+      border: none; cursor: pointer; font-size: 1rem;
+    }
+    .nav-cta:hover { background: var(--accent); }
+    /* Hero */
+    .hero {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      padding: 4rem 0 2rem 0;
+      background: linear-gradient(120deg, var(--primary) 0%, var(--accent) 100%);
+      color: #fff;
+    }
+    .hero-left {
+      flex: 1 1 300px; max-width: 500px; min-width: 300px;
+      padding: 1.5rem;
+    }
+    .hero-title {
+      font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem;
+    }
+    .hero-desc {
+      font-size: 1.2rem; margin-bottom: 1.7rem;
+    }
+    .hero-cta {
+      display: flex; gap: 1.2rem;
+    }
+    .cta-btn {
+      background: #fff; color: var(--primary); border: none;
+      padding: 0.9rem 2.2rem; font-size: 1.1rem; font-weight: 600;
+      border-radius: var(--radius); cursor: pointer;
+      box-shadow: 0 2px 8px rgba(79,142,247,0.13);
+      transition: background 0.20s, color 0.20s;
+    }
+    .cta-btn:hover {
+      background: var(--accent); color: #fff;
+    }
+    .hero-right {
+      flex: 1 1 320px; display: flex; justify-content: center; align-items: center;
+      min-width: 320px; padding: 1.5rem;
+    }
+    .hero-graphic {
+      width: 330px; height: 260px;
+      background: url('https://svgshare.com/i/13t0.svg') no-repeat center/contain;
+      /* Placeholder SVG, replace with your own */
+      filter: drop-shadow(0 8px 16px rgba(36,196,134,0.09));
+    }
+    /* USP Cards */
+    .usps {
+      display: flex; flex-wrap: wrap; gap: 1.5rem;
+      justify-content: center; margin: 3rem auto 0 auto; max-width: 1100px;
+    }
+    .usp-card {
+      flex: 1 1 220px; min-width: 220px; max-width: 260px;
+      background: #fff; border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(79,142,247,0.08);
+      padding: 1.4rem 1.2rem 1.1rem 1.2rem;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .usp-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(79,142,247,0.13);
+    }
+    .usp-icon {
+      font-size: 2.5rem; margin-bottom: 0.7rem;
+      color: var(--primary);
+    }
+    .usp-title { font-size: 1.12rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .usp-desc { color: var(--gray); font-size: 0.98rem; }
+    /* How it Works */
+    .how-section {
+      max-width: 1000px; margin: 4rem auto 1.5rem auto; padding: 1rem;
+      text-align: center;
+    }
+    .how-title { font-size: 2rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .how-steps {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+      margin-top: 2rem;
+    }
+    .how-step {
+      flex: 1 1 160px; min-width: 160px; max-width: 220px;
+      background: #fff;
+      border-radius: var(--radius); box-shadow: 0 4px 18px rgba(36,196,134,0.09);
+      padding: 1.5rem 1rem 1.1rem 1rem; text-align: center;
+      transition: transform 0.16s;
+    }
+    .how-step:hover { transform: scale(1.04); }
+    .how-icon { font-size: 2rem; color: var(--accent); margin-bottom: 0.7rem;}
+    .how-label { font-size: 1.06rem; font-weight: 600;}
+    .how-desc { font-size: 0.98rem; color: var(--gray);}
+    /* Features Section */
+    .features-section {
+      max-width: 1200px; margin: 4rem auto 2.5rem auto; padding: 1rem;
+    }
+    .features-title { font-size: 1.6rem; font-weight: 600; margin-bottom: 1.2rem; text-align: center;}
+    .features-grid {
+      display: flex; flex-wrap: wrap; gap: 1.7rem; justify-content: center;
+    }
+    .feature-card {
+      flex: 1 1 210px; min-width: 210px; max-width: 260px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(36,196,134,0.07);
+      padding: 1.1rem 1rem 0.95rem 1rem;
+      text-align: center;
+      transition: box-shadow 0.17s, transform 0.17s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 7px 28px rgba(79,142,247,0.11);
+      transform: translateY(-4px) scale(1.02);
+    }
+    .feature-icon { font-size: 2.2rem; color: var(--accent); margin-bottom: 0.6rem;}
+    .feature-title { font-size: 1.09rem; font-weight: 600; }
+    .feature-desc { color: var(--gray); font-size: 0.97rem;}
+    /* Subscription */
+    .subscription-section {
+      background: linear-gradient(90deg, #fff 60%, #e3f7f1 100%);
+      border-radius: var(--radius);
+      max-width: 800px; margin: 3.5rem auto 2.5rem auto; padding: 2.2rem 2rem;
+      box-shadow: 0 3px 18px rgba(36,196,134,0.08);
+      text-align: center;
+    }
+    .subscription-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.7rem; }
+    .subscription-options {
+      display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 1.2rem;
+    }
+    .subscription-card {
+      flex: 1 1 180px; min-width: 180px; max-width: 250px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(79,142,247,0.07);
+      padding: 1.1rem 1rem 0.95rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .sub-type { font-size: 1.09rem; font-weight: 700; color: var(--primary);}
+    .sub-price { color: var(--accent); font-size: 1.2rem; font-weight: 600;}
+    .sub-benefits { font-size: 0.98rem; color: var(--gray); margin-top: 0.5rem;}
+    /* Security */
+    .security-section {
+      background: #fff; margin: 3.5rem auto 2.5rem auto;
+      max-width: 900px; border-radius: var(--radius); padding: 2rem 1.2rem;
+      box-shadow: 0 3px 18px rgba(36,196,134,0.11);
+    }
+    .security-title { font-size: 1.5rem; font-weight: 700; text-align: center; margin-bottom: 0.7rem;}
+    .security-list {
+      display: flex; flex-wrap: wrap; gap: 1.7rem; justify-content: center; margin-top: 1.2rem;
+    }
+    .security-card {
+      flex: 1 1 170px; min-width: 170px; max-width: 220px;
+      background: #f5f7fa;
+      border-radius: var(--radius); padding: 0.9rem; text-align: center;
+      box-shadow: 0 1px 4px rgba(36,196,134,0.05);
+    }
+    .security-icon { font-size: 2rem; color: var(--danger); }
+    .security-layer { font-weight: 600; margin-top: 0.3rem;}
+    .security-desc { color: var(--gray); font-size: 0.95rem;}
+    /* Testimonials */
+    .testimonials-section {
+      max-width: 900px; margin: 3.5rem auto 2rem auto; text-align: center;
+    }
+    .testimonials-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 1.2rem;}
+    .testimonial-carousel {
+      display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; align-items: stretch;
+      margin-bottom: 1.2rem;
+    }
+    .testimonial {
+      flex: 1 1 220px; min-width: 220px; max-width: 320px; background: #fff;
+      border-radius: var(--radius); box-shadow: 0 2px 10px rgba(79,142,247,0.08);
+      padding: 1.1rem 1rem 0.95rem 1rem; text-align: left; position: relative;
+    }
+    .testimonial::before {
+      content: "“";
+      font-size: 3rem; color: var(--primary); position: absolute; top: 10px; left: 12px; opacity: 0.2;
+    }
+    .testimonial-photo {
+      width: 42px; height: 42px; border-radius: 50%; object-fit: cover;
+      margin-right: 0.7rem; border: 2px solid var(--primary);
+    }
+    .testimonial-user {
+      display: flex; align-items: center; margin-top: 1rem; font-size: 1rem;
+    }
+    .testimonial-name { font-weight: 700; margin-right: 0.5rem;}
+    .testimonial-role { color: var(--gray); font-size: 0.93rem;}
+    /* Stats */
+    .stats-section {
+      display: flex; gap: 2.5rem; justify-content: center; align-items: center;
+      margin: 2.5rem auto 2.5rem auto; max-width: 700px;
+    }
+    .stat-card {
+      background: #fff; border-radius: var(--radius); padding: 1.2rem 1.1rem;
+      box-shadow: 0 2px 10px rgba(36,196,134,0.09); min-width: 120px; text-align: center;
+    }
+    .stat-num { font-size: 2rem; font-weight: 700; color: var(--primary);}
+    .stat-label { color: var(--gray); font-size: 0.96rem;}
+    /* Footer */
+    .footer {
+      margin-top: 2.5rem; background: var(--primary); color: #fff;
+      padding: 2.6rem 3vw 1rem 3vw;
+      border-radius: 32px 32px 0 0;
+      text-align: center;
+    }
+    .footer-links { margin-bottom: 0.9rem;}
+    .footer-link { color: #fff; margin: 0 1.1rem; font-size: 1rem;}
+    .footer-corp { font-size: 0.98rem; margin-top: 0.5rem;}
+    /* Responsive */
+    @media (max-width: 900px) {
+      .usps, .features-grid, .how-steps, .security-list, .stats-section, .testimonial-carousel, .subscription-options {
+        flex-direction: column; align-items: center;
+      }
+      .hero { flex-direction: column; text-align: center; }
+      .hero-right { margin-top: 2rem; }
+      .navbar { flex-direction: column;}
+      .nav-links { margin-bottom: 0.8rem;}
+    }
+    @media (max-width: 600px) {
+      .navbar, .footer { padding: 1.1rem 2vw; }
+      .hero { padding: 2rem 0 1.2rem 0; }
+      .hero-title { font-size: 2rem;}
+      .how-section, .features-section, .security-section, .testimonials-section, .subscription-section {
+        padding: 1rem 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">Xwork</div>
+    <div class="nav-links">
+      <a href="#how">How it Works</a>
+      <a href="#features">Features</a>
+      <a href="#subscription">Pricing</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>
+      <button class="nav-cta" onclick="openModal('signup')">Sign Up</button>
+      <button class="nav-cta" onclick="openModal('login')">Login</button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <div class="hero-title">A New Era of Freelancing Starts Here</div>
+      <div class="hero-desc">
+        <strong>Zero commission for 6 months. Only 5% after.</strong><br/>
+        Secure, AI-powered, ultra-fast. Xwork is the <em>easiest</em>, <em>safest</em>, and <em>most rewarding</em> way to connect top freelancers and clients.<br/>
+      </div>
+      <div class="hero-cta">
+        <button class="cta-btn" onclick="openModal('freelancer')">Join as Freelancer</button>
+        <button class="cta-btn" onclick="openModal('client')">Find a Freelancer</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-graphic"></div>
+    </div>
+  </section>
+
+  <!-- USP Cards -->
+  <div class="usps">
+    <div class="usp-card">
+      <div class="usp-icon">💸</div>
+      <div class="usp-title">No Commission for 6 Months</div>
+      <div class="usp-desc">Earn more, pay less. Only 5% after 6 months—industry’s best deal!</div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-icon">🤖</div>
+      <div class="usp-title">AI-Powered Matching</div>
+      <div class="usp-desc">Get the perfect project or pro—fast. Smart, personalized suggestions.</div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-icon">🔒</div>
+      <div class="usp-title">5-Layer Security</div>
+      <div class="usp-desc">Your data and payments are protected by bank-grade security, always.</div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-icon">⚡</div>
+      <div class="usp-title">Instant Escrow Payouts</div>
+      <div class="usp-desc">Get paid as soon as work is approved—no long delays or holds.</div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-icon">📝</div>
+      <div class="usp-title">Verified Skills & Reviews</div>
+      <div class="usp-desc">Real skill tests and ID checks. Only legit talent, only honest reviews.</div>
+    </div>
+  </div>
+
+  <!-- How it Works -->
+  <section class="how-section" id="how">
+    <div class="how-title">How Xwork Works</div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-icon">📝</div>
+        <div class="how-label">Sign Up</div>
+        <div class="how-desc">Create a free client or freelancer account in seconds.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-icon">📢</div>
+        <div class="how-label">Post or Find Projects</div>
+        <div class="how-desc">Clients post jobs, freelancers search or get matched instantly.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-icon">💬</div>
+        <div class="how-label">Collaborate Securely</div>
+        <div class="how-desc">Chat, share files, track progress, and set milestones—all in one place.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-icon">💰</div>
+        <div class="how-label">Get Paid</div>
+        <div class="how-desc">Money is held safely in escrow and released instantly when work is done.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="features-title">Market Gap Features & Why We're Different</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <div class="feature-title">AI Talent & Project Match</div>
+        <div class="feature-desc">Advanced algorithms connect the right people, not just keywords.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <div class="feature-title">Skill Verification</div>
+        <div class="feature-desc">Built-in tests & portfolio checks guarantee true talent.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <div class="feature-title">Top Talent Badges</div>
+        <div class="feature-desc">Earn badges and profile highlights by proving your skills.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <div class="feature-title">Milestones & Contracts</div>
+        <div class="feature-desc">Split projects into safe phases, with auto-generated NDAs & contracts.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Mobile-First Experience</div>
+        <div class="feature-desc">Work or hire from anywhere, on any device.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👩‍💼</div>
+        <div class="feature-title">24/7 Support Chat</div>
+        <div class="feature-desc">Real people & smart bots, always available to help you win.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Model -->
+  <section class="subscription-section" id="subscription">
+    <div class="subscription-title">Simple, Honest Pricing</div>
+    <div>Free to start. Upgrade when you want more power.</div>
+    <div class="subscription-options">
+      <div class="subscription-card">
+        <div class="sub-type">Freelancer Free</div>
+        <div class="sub-price">₹0/mo</div>
+        <div class="sub-benefits">
+          • Unlimited profile views<br>
+          • 6-month zero commission<br>
+          • Apply to 10 jobs/month<br>
+          • Basic support
+        </div>
+      </div>
+      <div class="subscription-card">
+        <div class="sub-type">Freelancer Pro</div>
+        <div class="sub-price">₹599/mo</div>
+        <div class="sub-benefits">
+          • Unlimited proposals<br>
+          • Profile highlight<br>
+          • Analytics dashboard<br>
+          • Priority support
+        </div>
+      </div>
+      <div class="subscription-card">
+        <div class="sub-type">Client Free</div>
+        <div class="sub-price">₹0/mo</div>
+        <div class="sub-benefits">
+          • Post projects free<br>
+          • 6-month zero commission<br>
+          • Basic talent search<br>
+          • Standard support
+        </div>
+      </div>
+      <div class="subscription-card">
+        <div class="sub-type">Client Plus</div>
+        <div class="sub-price">₹999/mo</div>
+        <div class="sub-benefits">
+          • Featured project slots<br>
+          • Priority matching<br>
+          • Premium support<br>
+          • Analytics
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security Layer Section -->
+  <section class="security-section">
+    <div class="security-title">5-Layer Security to Protect Your Work & Data</div>
+    <div class="security-list">
+      <div class="security-card">
+        <div class="security-icon">🔐</div>
+        <div class="security-layer">End-to-End Encryption</div>
+        <div class="security-desc">All communication and payments are encrypted for privacy.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">🛡️</div>
+        <div class="security-layer">2-Factor Authentication</div>
+        <div class="security-desc">Protect your account with mobile/email verification.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">🏦</div>
+        <div class="security-layer">Secure Escrow System</div>
+        <div class="security-desc">Your money is held safely until the job is done.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">🕵️‍♂️</div>
+        <div class="security-layer">Manual & AI Monitoring</div>
+        <div class="security-desc">We fight fraud and scams with smart tech and real people.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">📜</div>
+        <div class="security-layer">GDPR & Data Compliance</div>
+        <div class="security-desc">Your data is handled legally, fairly, and transparently.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials & Stats -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="testimonials-title">What Our Users Say</div>
+    <div class="testimonial-carousel" id="testimonial-carousel">
+      <div class="testimonial">
+        <div>
+          “Xwork helped me double my income! The zero commission is a game-changer and the client quality is amazing.”
+        </div>
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/men/31.jpg" class="testimonial-photo" alt="User"/>
+          <div>
+            <div class="testimonial-name">Amit S.</div>
+            <div class="testimonial-role">Full Stack Developer</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div>
+          “I hired a designer in 2 hours and loved the instant escrow. Xwork is so much faster than Upwork or Fiverr.”
+        </div>
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" class="testimonial-photo" alt="User"/>
+          <div>
+            <div class="testimonial-name">Priya D.</div>
+            <div class="testimonial-role">Startup Founder</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div>
+          “The AI matching is super accurate, and I feel much more secure here. Highly recommend to all freelancers.”
+        </div>
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/men/65.jpg" class="testimonial-photo" alt="User"/>
+          <div>
+            <div class="testimonial-name">Rahul K.</div>
+            <div class="testimonial-role">Content Writer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-section">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-projects">0</div>
+        <div class="stat-label">Projects Posted</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-freelancers">0</div>
+        <div class="stat-label">Freelancers Joined</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-earnings">₹0</div>
+        <div class="stat-label">Total Earnings</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-links">
+      <a href="#home" class="footer-link">Home</a>
+      <a href="#how" class="footer-link">How it Works</a>
+      <a href="#features" class="footer-link">Features</a>
+      <a href="#subscription" class="footer-link">Pricing</a>
+      <a href="#testimonials" class="footer-link">Testimonials</a>
+      <a href="support@xwork.com" class="footer-link">Support</a>
+    </div>
+    <div class="footer-corp">
+      Operated by <b>LVS Private Limited Corporation</b> &copy; 2025. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Modals for Sign Up / Login / Join as Freelancer / Find a Freelancer -->
+  <div id="modal-bg" style="display:none; position:fixed; left:0;top:0;width:100vw;height:100vh;z-index:200;background:rgba(32,35,42,0.46);"></div>
+  <div id="modal" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; border-radius:18px; padding:2.2rem 1.8rem; z-index:201; box-shadow:0 12px 48px rgba(36,196,134,0.13); min-width:290px; max-width:95vw;">
+    <div id="modal-content"></div>
+  </div>
+
+  <script>
+    // Modal and Onboarding Logic
+    function openModal(type) {
+      document.getElementById('modal-bg').style.display = 'block';
+      document.getElementById('modal').style.display = 'block';
+      let html = '';
+      if (type === 'signup' || type === 'login') {
+        html = `
+          <h2 style="margin-top:0;">${type === 'signup' ? 'Sign Up' : 'Login'}</h2>
+          <form style="margin-bottom:1.1rem;">
+            <input type="email" placeholder="Email" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+            <input type="password" placeholder="Password" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+            <button style="background:var(--primary);color:#fff;width:100%;padding:0.7rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;">${type === 'signup' ? 'Sign Up' : 'Login'}</button>
+          </form>
+          <a href="#" onclick="showForgot();return false;" style="font-size:0.97rem;color:var(--primary);">Forgot password?</a>
+        `;
+      } else if (type === 'freelancer') {
+        html = `
+          <h2 style="margin-top:0;">Join as Freelancer</h2>
+          <form style="margin-bottom:1.1rem;" onsubmit="event.preventDefault();showFreelancerOnboarding();">
+            <input type="email" placeholder="Email" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+            <input type="password" placeholder="Password" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+            <button style="background:var(--primary);color:#fff;width:100%;padding:0.7rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;">Continue</button>
+          </form>
+          <a href="#" onclick="showForgot();return false;" style="font-size:0.97rem;color:var(--primary);">Forgot password?</a>
+        `;
+      } else if (type === 'client') {
+        html = `
+          <h2 style="margin-top:0;">Find a Freelancer</h2>
+          <form style="margin-bottom:1.1rem;" onsubmit="event.preventDefault();showClientOnboarding();">
+            <input type="email" placeholder="Email" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+            <input type="password" placeholder="Password" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+            <button style="background:var(--primary);color:#fff;width:100%;padding:0.7rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;">Continue</button>
+          </form>
+          <a href="#" onclick="showForgot();return false;" style="font-size:0.97rem;color:var(--primary);">Forgot password?</a>
+        `;
+      }
+      document.getElementById('modal-content').innerHTML = html;
+    }
+    function closeModal() {
+      document.getElementById('modal-bg').style.display = 'none';
+      document.getElementById('modal').style.display = 'none';
+      document.getElementById('modal-content').innerHTML = '';
+    }
+    document.getElementById('modal-bg').onclick = closeModal;
+    // Forgot password
+    function showForgot() {
+      document.getElementById('modal-content').innerHTML = `
+        <h2 style="margin-top:0;">Reset Password</h2>
+        <form style="margin-bottom:1.1rem;">
+          <input type="email" placeholder="Enter your email" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <button style="background:var(--primary);color:#fff;width:100%;padding:0.7rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;">Send Reset Link</button>
+        </form>
+        <a href="#" onclick="closeModal();return false;" style="font-size:0.97rem;color:var(--primary);">Back to Login</a>
+      `;
+    }
+    // Freelancer onboarding
+    function showFreelancerOnboarding() {
+      document.getElementById('modal-content').innerHTML = `
+        <h2 style="margin-top:0;">Freelancer Onboarding</h2>
+        <form style="max-height:55vh;overflow:auto;" onsubmit="event.preventDefault();showFreelancerDashboard();">
+          <input type="text" placeholder="Full Name" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <input type="text" placeholder="Skills (comma separated)" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <input type="number" placeholder="Experience (years)" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <input type="url" placeholder="Portfolio Link" style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <input type="number" placeholder="Hourly Rate (₹)" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <input type="text" placeholder="Bank Account Number" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <input type="text" placeholder="IFSC Code" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <textarea placeholder="About You (Bio)" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;resize:vertical;height:68px;"></textarea>
+          <button style="background:var(--accent);color:#fff;width:100%;padding:0.7rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;">Finish & Go to Dashboard</button>
+        </form>
+      `;
+    }
+    function showFreelancerDashboard() {
+      document.getElementById('modal-content').innerHTML = `
+        <h2 style="margin-top:0;">Welcome to Your Freelancer Dashboard</h2>
+        <ul style="padding-left:1.2rem;">
+          <li>View and apply to matching projects</li>
+          <li>Track earnings and milestones</li>
+          <li>Chat with clients and manage your workflow</li>
+          <li>Upgrade to Pro for more features</li>
+        </ul>
+        <button onclick="closeModal();" style="background:var(--primary);color:#fff;width:100%;padding:0.7rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;margin-top:1rem;">Go to Main Site</button>
+      `;
+    }
+    // Client onboarding
+    function showClientOnboarding() {
+      document.getElementById('modal-content').innerHTML = `
+        <h2 style="margin-top:0;">Client Onboarding</h2>
+        <form style="max-height:55vh;overflow:auto;" onsubmit="event.preventDefault();showClientDashboard();">
+          <input type="text" placeholder="Full Name or Company" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <input type="text" placeholder="Project Title" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <textarea placeholder="Project Description" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;resize:vertical;height:68px;"></textarea>
+          <input type="number" placeholder="Budget (₹)" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <input type="text" placeholder="Required Skills (comma separated)" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <input type="text" placeholder="Bank Account Number" required style="width:100%;padding:0.6rem 0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+          <button style="background:var(--accent);color:#fff;width:100%;padding:0.7rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;">Finish & Go to Dashboard</button>
+        </form>
+      `;
+    }
+    function showClientDashboard() {
+      document.getElementById('modal-content').innerHTML = `
+        <h2 style="margin-top:0;">Welcome to Your Client Dashboard</h2>
+        <ul style="padding-left:1.2rem;">
+          <li>Post new projects or search for top freelancers</li>
+          <li>Review proposals and chat with talent</li>
+          <li>Track your project milestones and payments</li>
+          <li>Upgrade to Plus for more reach</li>
+        </ul>
+        <button onclick="closeModal();" style="background:var(--primary);color:#fff;width:100%;padding:0.7rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;margin-top:1rem;">Go to Main Site</button>
+      `;
+    }
+    // Animated stats
+    function animateStat(id, end, prefix = '', duration = 1200) {
+      let el = document.getElementById(id);
+      let start = 0, step = Math.ceil(end / (duration / 16));
+      function update() {
+        start += step;
+        if (start > end) start = end;
+        el.textContent = prefix + start.toLocaleString();
+        if (start < end) requestAnimationFrame(update);
+      }
+      update();
+    }
+    window.onload = function(){
+      animateStat('stat-projects', 1852, '', 1600);
+      animateStat('stat-freelancers', 1208, '', 1700);
+      animateStat('stat-earnings', 9876500, '₹', 2000);
+    }
+  </script>
+</body>
+</html>
